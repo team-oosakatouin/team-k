@@ -6,7 +6,7 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.string :postal_code, null: false
       
       ##配送先住所を保存するカラム
-      t.string　:address, null: false
+      t.string :address, null: false
       
       ##配送先宛名を保存するカラム
       t.string :name, null: false
