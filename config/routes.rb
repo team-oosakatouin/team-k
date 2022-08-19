@@ -9,8 +9,8 @@ devise_for :customers,skip: [:passwords], controllers: {
   sessions: 'public/sessions'
 }
 
+root to: "public/homes#top"
 namespace :public do
-  root :to =>"homes#top"
   get "home/about"=>"homes#about", as: "about"
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
