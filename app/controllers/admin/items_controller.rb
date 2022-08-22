@@ -10,7 +10,14 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-
-
+    @item = Item.new(item.params)
+    @imte.save 
   end
- end
+  
+  private
+
+  def item_params
+    params.require(:iten).permit(:image, :name, :introduction, :genre_id, :price, :is_active)
+  end
+
+end
