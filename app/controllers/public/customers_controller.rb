@@ -1,4 +1,9 @@
 class Public::CustomersController < ApplicationController
+  # マイページ
+  def show
+        @customer = current_customer
+  end
+  
   def edit
     @customers = Customer.find(params[:id])
   end
