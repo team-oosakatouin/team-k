@@ -1,10 +1,6 @@
+<h2>商品一覧</h2>
 
-<h2 class="text-left" "p-3 mb-2 bg-primary text-white">商品一覧</h2>
-
-  <%=  link_to users_path,class: 'nav-link text-light' do %>
-    <i class="fas fa-users"></i>
-  <% end %>
-
+<%= link_to "商品新規登録", new_admin_item_path, class: 'btn btn-success' %>
 
 <table class='table table-hover table-inverse'>
   <thead>
@@ -19,12 +15,20 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= item.item.id %></td>
-        <td><%= link_to item.name,item, class: "book_#{book.id}" %></td>
+        <td><%= item.id %></td>
+        <td><%= link_to item.name, class: "book_#{book.id}" %></td>
         <td><%= item.price %></td>
-        <td><%= genres.genres.name %></td>
-        <td><%= items.is_active %></td>
+        <td><%= item.genres.name %></td>
+        <td>
+          <% if item.is_enabled == true %>
+            販売中
+					<% else %>
+					  販売停止中
+					<% end %>
+        </td>
       </tr>
     <% end %>
+    <!-- kaminariのgemを使用するための記述 -->
+			<%= paginate @items %>
   </tbody>
 </table>
