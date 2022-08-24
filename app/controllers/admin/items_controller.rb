@@ -11,9 +11,9 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item.params)
-    @imte.save 
+    @imte.save
   end
-  
+
   private
 
   def item_params
