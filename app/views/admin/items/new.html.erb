@@ -1,12 +1,13 @@
-<div class="row">
-  <h2>商品新規登録</h2>
-  <%= form_with model: @item, do |f| %>
+<div class="container">
+  <div class="row">
+    <h2>商品新規登録</h2>
+    <%= form_with model: @item, url: admin_items_path, method: :post, local: true  do |f| %>
     <!-- エラーメッセージ表示-->
-    <!-- エラーメッセージ表示 end-->
-    <div class="col-md-5">
+    <%= render "public/shared/error_messages", resource: @item %>
+    <div class="col-md-8">
       <div class="form-group">
         <%= f.label :商品画像 %>
-        <%= f.imag_fiald :image_id, accept: "image/*" %>
+        <%= f.file_field :image_id %>
       </div>
       <div class="form-group">
         <%= f.label :商品名 %>
@@ -18,7 +19,7 @@
       </div>
       <div class="form-group">
         <%= f.label :ジャンル %>
-        <%= f.collection_select(:genre_id, Genre.where(is_enabled: true), :id, :name, prompt: "選択してください") %>
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "選択してください" %>
       </div>
       <div class="form-group">
         <%= f.label :税抜価格 %>
@@ -36,4 +37,5 @@
       </div>
     </div>
     <% end %>
+  </div>
 </div>
