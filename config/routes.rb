@@ -13,9 +13,15 @@ root to: "public/homes#top"
 namespace :public do
   get "home/about"=>"homes#about", as: "about"
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-  resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
+  # 注文
+  post "orders/confirm" => "orders#confirm"
+  get "orders/complete" => "orders#complete"
+  resources :orders, only: [:new, :create, :index, :show]
   resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
-  resources :customers, only: [:edit, :show, :quit, :update, :withdraw]
+  ##会員
+  get "customers/quit" => "customers#quit"
+  patch "customers/withdraw" => "customers#withdraw"
+  resources :customers, only: [:edit, :show, :update]
   resources :items, only: [:index, :show]
 
 end
