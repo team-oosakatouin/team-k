@@ -12,14 +12,21 @@ devise_for :customers,skip: [:passwords], controllers: {
 root to: "public/homes#top"
 namespace :public do
   get "home/about"=>"homes#about", as: "about"
+  #配送先
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-  resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
-  resources :cart_items, only: [:index, :update, :create, :destroy]
-  resources :customers, only: [:edit, :show, :update, :withdraw]
-  resources :items, only: [:index, :show]
-  # 追加記載
+  # 注文
+  post "orders/confirm" => "orders#confirm"
+  get "orders/complete" => "orders#complete"
+  resources :orders, only: [:new, :create, :index, :show]
+  ##会員
   get "customers/quit" => "customers#quit"
+  patch "customers/withdraw" => "customers#withdraw"
+  resources :customers, only: [:edit, :show, :update]
+  #カート内商品
   delete "cart_items/destroy_all" => "cart_items#destroy_all"
+  resources :cart_items, only: [:index, :update, :create, :destroy]
+  #商品
+  resources :items, only: [:index, :show]
 end
 
 

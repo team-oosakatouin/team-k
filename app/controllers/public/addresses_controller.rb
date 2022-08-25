@@ -16,6 +16,10 @@ def create
   end
 end
 
+def edit
+  @address = Address.find(params[:id])
+end
+
 def destroy
   # ↓記載が分からん。。。
   @address = Address.find(params[:id])
