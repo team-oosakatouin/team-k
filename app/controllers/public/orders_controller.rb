@@ -1,5 +1,11 @@
 class Public::OrdersController < ApplicationController
   
+
+  def index
+    @orders = Order.where(customer_id:current_customer)
+  end
+  
+
   def new
     @order = Order.new
     #@orders = current_client.orders.all
