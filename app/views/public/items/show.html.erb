@@ -3,7 +3,8 @@
 
 <!-- 画像 -->
 	    <div class="col-5">
-        <%= attachment_image_tag @item, :image, size: '50x50', format: "jpeg", fallback: 'noimage.jpg', size: '300x300', class: "rounded" %>
+	      <%= image_tag @item.image_id, size: "200x200" %>
+        <!--<-%= attachment_image_tag @item, :image, size: '50x50', format: "jpeg", fallback: 'noimage.jpg', size: '300x300', class: "rounded" %>-->
 	    </div>
 
 <!-- タイトル -->
@@ -30,7 +31,7 @@
       <div class="offset-6">
 
         <div class="row">
-          <%= form_for (@cart_item) do |f| %>
+         <%= form_with model:@cart_item, url: public_cart_items_path, method: :post do |f| %>
             <%= f.number_field :amount, min:1, placeholder: "個数選択" %><span>個</span>
             <%= f.hidden_field :item_id, :value => @item.id %>
             <%= f.submit "カートに入れる", class: "btn btn-outline-danger" %>

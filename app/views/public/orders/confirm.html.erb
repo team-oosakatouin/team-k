@@ -23,16 +23,16 @@
           <% current_customer.cart_items.each do |cart| %>
             <tr class="brown-border">
               <td>
-                <%= attachment_image_tag cart.item, :image, :size => '50x50',fallback: "no_image.jpg" %>
+                <%= image_tag cart.item.image_id, size: "50x50" %>
                 <span> </span>
                 <%= cart.item.name %>
               </td>
 
               <td class="align-middle"><%= (cart.item.price * 1.1).floor %></td>
 
-              <td class="align-middle"><%= cart.quantity %></td>
+              <td class="align-middle"><%= cart.amount %></td>
 
-              <td class="align-middle"><%= (cart.item.price * 1.1).floor * cart.quantity %></td>
+              <td class="align-middle"><%= (cart.item.price * 1.1).floor * cart.amount %></td>
             </tr>
           <% end %>
         </tbody>
@@ -52,12 +52,12 @@
 
           <tr class="brown-border">
             <td>商品合計</td>
-            <td><%= @total_price %></td>
+            <td><%= @total_payment %></td>
           </tr>
 
           <tr class="brown-border">
             <td>請求金額</td>
-            <td><%= @total_price + 800 %></td>
+            <td><%= @total_payment + 800 %></td>
           </tr>
 
         </tbody>
