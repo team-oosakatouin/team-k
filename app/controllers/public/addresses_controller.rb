@@ -20,12 +20,26 @@ def edit
   @address = Address.find(params[:id])
 end
 
+def update
+  address = Address.find(params[:id])
+    if address.update(address_params)
+      flash[:success] = '編集を保存しました'
+      redirect_to public_addresses_path
+    else
+      @address = Address.find(params[:id])
+      flash[:danger] =
+        '必要情報を入力してください／ハイフンは使用できません'
+      render "public/addresses/edit"
+    end
+end
+
+
 def destroy
   # ↓記載が分からん。。。
   @address = Address.find(params[:id])
   @address.destroy
   flash[:success] = '削除しました'
-  redirect_to public_address_path
+  redirect_to public_addresses_path
 end
 
  private

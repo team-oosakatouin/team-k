@@ -1,7 +1,7 @@
 <div class="row login-row">
 <h2>配送先編集</h2>
 
-<%= form_for(@address) do |f| %>
+<%= form_for(@address, url: public_address_path(@address),html: {method: "patch"}) do |f| %>
 	<div class="field">
                   <label class="postal-code-label">郵便番号(ハイフンなし)</label>
                   <%= f.text_field :postal_code, autofocus: true, class:"" %>
