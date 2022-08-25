@@ -14,10 +14,12 @@ namespace :public do
   get "home/about"=>"homes#about", as: "about"
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
-  resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
-  resources :customers, only: [:edit, :show, :quit, :update, :withdraw]
+  resources :cart_items, only: [:index, :update, :create, :destroy]
+  resources :customers, only: [:edit, :show, :update, :withdraw]
   resources :items, only: [:index, :show]
-
+  # 追加記載
+  get "customers/quit" => "customers#quit"
+  delete "cart_items/destroy_all" => "cart_items#destroy_all"
 end
 
 
