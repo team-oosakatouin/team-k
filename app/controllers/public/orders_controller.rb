@@ -7,11 +7,15 @@ class Public::OrdersController < ApplicationController
     @addresses = @customer.addresses
   end
   
+  def show
+		@order = Order.find(params[:id])
+		@order_details = @order.order_details
+	end
   
   private
 
   def order_params
     params.require(:order).permit(:payment, :receive_name, :postal_code, :street_address)
   end
-  
+
 end
