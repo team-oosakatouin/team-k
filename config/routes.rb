@@ -24,7 +24,7 @@ namespace :public do
   resources :customers, only: [:edit, :show, :update]
   #カート内商品
   delete "cart_items/destroy_all" => "cart_items#destroy_all"
-  resources :cart_items, only: [:index, :update, :create, :destroy]
+  resources :cart_items, only: [:index, :update, :create, :destroy, :show]
   #商品
   resources :items, only: [:index, :show]
 end

@@ -19,8 +19,8 @@ class Public::CartItemsController < ApplicationController
      redirect_to public_cart_items_path
    else
      @cart_item = CartItem.new(amount: params[:cart_item][:amount].to_i,
-       item_id: params[:cart_item][:id].to_i,
-       customer_id: current_customer.id)
+     item_id: params[:cart_item][:item_id].to_i,
+     customer_id: current_customer.id)
 
      @cart_item.save
        flash[:success] = "カートに商品を入れました"
