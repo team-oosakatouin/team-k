@@ -14,16 +14,16 @@ class Public::OrdersController < ApplicationController
   end
   
   def show
-		@order = Order.find(params[:id])
-		@order_details = @order.order_details
-	end
+	  @order = Order.find(params[:id])
+	  @order_details = @order.order_details
+  end
 	
 	def confirm
-        @orders = current_customer.orders
-        @total_payment = calculate(current_customer)
-      if  session[:address].length <8
-        @address = ShipAddress.find(session[:address])
-      end
+    @orders = current_customer.orders
+    @total_payment = calculate(current_customer)
+    if session[:address].length <8
+       @address = ShipAddress.find(session[:address])
+    end
   end
   
   private
