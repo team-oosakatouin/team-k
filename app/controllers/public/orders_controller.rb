@@ -1,10 +1,10 @@
 class Public::OrdersController < ApplicationController
-  
+
 
   def index
     @orders = Order.all#where(customer_id:current_customer)
   end
-  
+
 
   def new
     @order = Order.new
@@ -12,12 +12,12 @@ class Public::OrdersController < ApplicationController
     @customer = Customer.find(current_customer.id)
     @addresses = @customer.addresses
   end
-  
+
   def show
 	  @order = Order.find(params[:id])
 	  @order_details = @order.order_details
   end
-	
+
 	def confirm
     @orders = current_customer.orders
     @total_payment = calculate(current_customer)
@@ -25,7 +25,7 @@ class Public::OrdersController < ApplicationController
        @address = ShipAddress.find(session[:address])
     end
   end
-  
+
   private
 
   def order_params
