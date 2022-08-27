@@ -1,34 +1,41 @@
-<h2>商品一覧</h2>
+<div class="container">
+<h4 class="text-center", style="background-color:#eee; width:150px; margin:50px 115px;">商品一覧</h4>
 
-<%= link_to "商品新規登録", new_admin_item_path, class: 'btn btn-success' %>
+<%= link_to new_admin_item_path, style:"margin-left:900px; font-size: 30px;" do %><i class="fas fa-plus-circle"></i><% end %>
 
-<table class='table table-hover table-inverse'>
-  <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="row">
+  <div class="col-12">
+    <table class='table table-hover table-inverse', style="width:950px; margin: 0 auto; border-top:1px solid #bbb;">
+      <thead>
+        <tr style="background-color:#eee;">
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+    <tbody>
     <% @items.each do |item| %>
       <tr>
         <td><%= item.id %></td>
-        <td><%= link_to item.name, admin_item_path(item.id) %></td>
+        <td class="align-middle", style="text-decoration:underline">
+          <%= link_to admin_item_path(item.id), class:"text-dark" do %><% item.name %><% end %></td>
         <td><%= item.price %></td>
         <td><%= item.genre.name %></td>
-        <td>
+        <td class="text-success font-weight-bold">
           <% if item.is_active == true %>
             販売中
 					<% else %>
 					  販売停止中
 					<% end %>
-        </td>
+				</td>
       </tr>
     <% end %>
+    </tbody>
+    </table>
     <!-- kaminariのgemを使用するための記述 -->
-			<%= paginate @items %>
-  </tbody>
-</table>
+		<%= paginate @items %>
+		</div>
+	</div>
+</div>

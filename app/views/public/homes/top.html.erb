@@ -18,21 +18,20 @@
       <div>
         <div class = "new-arrival">
           <h3><strong>新着商品</strong></h3>
-          
+          <div class = "new-arrival-contents" style="display:flex; flex-wrap:wrap;">
             <% @items.each do |item| %>
               <%= link_to public_item_path(item), class:"text-dark"  do %>
               <div class="mr-3 mt-3">
-                  <!--%= image_tag item.get_item_image_id, size:"200x150" %-->
+                  <%= image_tag item.image_id, size:"200x150" %>
                   <p class="mt-3 mb-1"><strong><%= item.name %></strong></p>
-                  
+                  <p class="mb-5"><strong>￥<%= item.price.to_s(:delimited) %></strong></p>
                 </div>
               <% end %>
             <% end %>
           </div>
         </div>
       </div>
-      
+      <p align="right"><%= link_to "全ての商品を見る", public_items_path %></p>
     </div>
-
   </div>
 </div>

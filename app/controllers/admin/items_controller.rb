@@ -15,7 +15,7 @@ class Admin::ItemsController < ApplicationController
       flash[:notice] = "商品を登録しました"
     else
       flash[:notice] = "必要情報を入力してください"
-      render action: :new
+      render :new
     end
   end
 
@@ -30,10 +30,10 @@ class Admin::ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to admin_items_path(@item)
+      redirect_to admin_item_path(@item)
       flash[:notice_update] = "ジャンル情報を更新しました！"
     else
-      redirect_to edit_admin_item_path(@item)
+      render :edit
     end
   end
 

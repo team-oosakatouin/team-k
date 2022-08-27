@@ -1,39 +1,40 @@
 <div class="container">
-  <div class="row">
-    <h2>商品新規登録</h2>
+    <h4 class="text-center", style="background-color:#eee; width:150px; margin:30px 0 30px 100px;">商品新規登録</h4>
     <%= form_with model: @item, url: admin_items_path, method: :post, local: true  do |f| %>
     <!-- エラーメッセージ表示-->
     <%= render "public/shared/error_messages", resource: @item %>
-    <div class="col-md-8">
+    <div class="row">
+      <div class="col-md-8 m-auto">
+        <div class="form-group">
+          <%= f.label :商品画像, style:"margin-right:70px;" %>
+          <%= f.file_field :image_id, accept: "image/*" %>
+        </div>
       <div class="form-group">
-        <%= f.label :商品画像 %>
-        <%= f.file_field :image_id, accept: "image/*" %>
+        <%= f.label :商品名, style:"margin-right:86px;" %>
+        <%= f.text_field :name, placeholder: "商品名" %>
       </div>
       <div class="form-group">
-        <%= f.label :商品名 %>
-        <%= f.text_field :name %>
+        <%= f.label :商品説明, style:"vertical-align:top; margin-top:5px; margin-right:70px;" %>
+        <%= f.text_area :introduction, placeholder: "ここに説明文を記述します" %>
       </div>
       <div class="form-group">
-        <%= f.label :商品説明 %>
-        <%= f.text_area :introduction %>
+        <%= f.label :ジャンル, style:"margin-right:70px;" %>
+        <%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: "選択してください") %>
       </div>
       <div class="form-group">
-        <%= f.label :ジャンル %>
-        <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "選択してください" %>
+        <%= f.label :税抜価格, style:"margin-right:70px;" %>
+        <%= f.text_field :price %><%= "円" %>
       </div>
       <div class="form-group">
-        <%= f.label :税抜価格 %>
-        <%= f.text_field :price %>
-      </div>
-      <div class="form-group">
+        <%= f.label :sale_status, "販売ステータス", style:"margin-right:20px;"  %>
         <%= f.radio_button :is_active, true %>
-        <%= f.label :is_active, "販売中" %>
+        <%= f.label :is_active, "販売中", style:"margin-right:20px;" %>
         <%= f.radio_button :is_active, false %>
-        <%= f.label :is_active, "売切れ" %>
+        <%= f.label :is_active, "売切れ", style:"margin-right:20px;" %>
       </div>
       <div class="actions row">
         <%= f.hidden_field :id, :value => @item.id %>
-        <%= f.submit "新規登録",class:"btn btn-primary col-xs-12" %>
+        <%= f.submit "新規登録",class:"btn btn-success", style:"font-weight:bold; padding:5px 20px; margin:20px 20px 0 220px;" %>
       </div>
     </div>
     <% end %>

@@ -1,19 +1,19 @@
-
-	<h2>ショッピングカート</h2>
-
-		<%= link_to 'カートを空にする', public_cart_items_destroy_all_path, method: :delete, class: "btn btn-danger destroy-all" %>
-
-	<div class="row">
-		<table class="table table-bordered cart-table">
-			<thead class="thead-light">
-				<tr style="background-color:#F5F5F5;">
-					<th>商品名</th>
-					<th>単価(税込)</th>
-					<th>数量</th>
-					<th>小計</th>
-					<th>&nbsp;</th>
-				</tr>
-			</thead>
+<div>
+  <div class = "ml-auto mr-auto mt-5" style = "width:800px; height:34px;">
+    <h5 style = "display:inline-block; padding-left:10px; padding-right:10px; background-color:#eee; font-weight:bold;">ショッピングカート</h5>
+		<%= link_to public_cart_items_destroy_all_path, method: :delete, class: "btn btn-danger destroy-all", style:"display:inline-block; float:right;" do %><b>カートを空にする</b><% end %>
+	</div>
+	<div>
+    <table class = "table mt-5 table-bordered border-dark ml-auto mr-auto", style = "border-width:3px; width:900px;" >
+      <thead>
+        <tr style = "background-color:#eee;">
+          <td class = "border-dark", style = "width:40%">商品名</td>
+          <td class = "border-dark", style = "width:15%">単価（税込）</td>
+          <td class = "border-dark", style = "width:15%">数量</td>
+          <td class = "border-dark", style = "width:15%">小計</td>
+          <td class = "border-dark", style = "width:15%"></td>
+        </tr>
+      </thead>
 			<tbody>
 				<% @cart_items.each do |cart_item| %>
 				<tr>

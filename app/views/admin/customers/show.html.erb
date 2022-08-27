@@ -1,8 +1,8 @@
 <div class = "container">
   <div class=“row”>
     <div class="col-md-8">
-      <h3><%= @customer.first_name %><%= @customer.last_name %>さんの会員情報</h3>
-      <table class="table">
+      <h4 class="my-4 text-center", style="background-color: #eee; width:290px; padding-left: 12px;"><%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細</h4>
+      <table class="table table-borderless">
         <tbody>
           <tr>
             <th scope="col">会員ID</th>
@@ -55,8 +55,8 @@
         </tbody>
       </table>
       
-      <%= link_to "編集する", edit_admin_customer_path, class: "btn btn-primary" %>
-      <%= link_to "注文履歴一覧を見る", admin_order_path, class: "btn btn-primary" %>
+      <%= link_to "編集する", edit_admin_customer_path, class:"btn btn-primary", style:"font-weight:bold; padding:5px 20px; margin:20px 20px 0 120px;" %>
+      <%= link_to "注文履歴一覧を見る", admin_order_path, class:"btn btn-success", style:"font-weight:bold; padding:5px 20px; margin:20px 20px 0 120px;" %>
     </div>
   </div>
 </div>
