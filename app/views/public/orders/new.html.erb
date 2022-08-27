@@ -7,9 +7,9 @@
             <th scope="row">支払い方法</th>
             <td>
               <div class="radio">
-                <%= f.radio_button :payment, 0 %>
+                <%= f.radio_button :payment_method, "credit_card" %>
                 <label class="payment-label"> クレジットカード</label>
-                <%= f.radio_button :payment, 1 %>
+                <%= f.radio_button :payment_method, "transfer" %>
                 <label class="payment-label">銀行振込</label>
               </div>
             </td>
@@ -18,20 +18,20 @@
             <th scope="row">お届け先</th>
             <td>
               <div class="radio">
-                <%= radio_button_tag(:selected_address, :radio1) %>
+                <%= radio_button_tag(:selected_address, "radio1") %>
                 <%= label_tag(:selected_address, "ご自身の住所") %>
                 <p>&emsp;<%= @customer.postal_code %><%= @customer.address %></p>
                 <p>&emsp;<%= @customer.first_name %><%= @customer.last_name %></p>
               </div>
               <div class="radio">
-                <%= radio_button_tag(:selected_address, :radio2) %>
+                <%= radio_button_tag(:selected_address, "radio2") %>
                 <%= label_tag(:selected_address, "登録済住所から選択") %>
                 <p>&emsp;
                 <%= collection_select(:address, :address, current_customer.addresses.all, :id, :address, prompt: "住所を選択してください" )%>
                 </p>
               </div>
               <div class="radio">
-                <%= radio_button_tag(:selected_address, :radio3) %>
+                <%= radio_button_tag(:selected_address, "radio3") %>
                 <%= label_tag(:selected_address, "新しいお届け先") %>
                  <div class="field">
                   <label class="postal-code-label">郵便番号(ハイフンなし)</label>

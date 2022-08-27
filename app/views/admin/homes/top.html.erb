@@ -24,13 +24,7 @@
               <td>
                 <%= order.name %>
               </td>
-
-              <td class="align-middle">
-                <% order.order_details.each do |f| %>
-                <%= f.item_name %><br>
-                <% end %>
-              </td>
-
+              
               <td><%= order.order_details.count %></td>
 
               <td><%= order.status %></td>

@@ -5,4 +5,8 @@ class CartItem < ApplicationRecord
   
   validates :amount, presence:true
   
+  def subtotal
+    (item.price * amount * 1.1).floor
+  end
+  
 end
