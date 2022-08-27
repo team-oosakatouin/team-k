@@ -1,98 +1,75 @@
-<div class="container my-5">
+<div class="container">
   <div class="row">
-    <div class="offset-1">
-      <h2 class="red-border px-3">ご注文内容</h2>
-    </div>
-  </div>
+    <div class="col-md-12">
+      <h2 class="mt-4 mb-4">
+        <i class="far fa-list-alt"></i>
+        注文情報確認
+      </h2>
 
-  <div class="row mt-3">
-    <div class="offset-1 col-7">
-
-<!-- 注文商品の情報 -->
-      <table class="table table-borderless table-sm ">
-        <thead>
-          <tr class="red-border">
-            <th>商品</th>
-            <th>単価(税込)</th>
-            <th>数量</th>
-            <th>小計</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% current_customer.cart_items.each do |cart| %>
-            <tr class="brown-border">
-              <td>
-                <%= image_tag cart.item.image_id, size: "50x50" %>
-                <span> </span>
-                <%= cart.item.name %>
-              </td>
-
-              <td class="align-middle"><%= (cart.item.price * 1.1).floor %></td>
-
-              <td class="align-middle"><%= cart.amount %></td>
-
-              <td class="align-middle"><%= (cart.item.price * 1.1).floor * cart.amount %></td>
+      <div class="col-md-10">
+        <table class="table table-bordered mb-5">
+          <thead>
+            <tr class="table-warning">
+              <th>商品名</th>
+              <th>単価(税込)</th>
+              <th>数量</th>
+              <th>小計</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-
-    </div>
-
-<!-- 金額の情報 -->
-    <div class="col-2 d-flex">
-
-      <table class="table table-sm table-borderless align-self-end">
-        <tbody>
-          <tr class="brown-border">
-            <td>送料</td>
-            <td>800</td>
-          </tr>
-
-          <tr class="brown-border">
-            <td>商品合計</td>
-            <td><%= @total_payment %></td>
-          </tr>
-
-          <tr class="brown-border">
-            <td>請求金額</td>
-            <td><%= @total_payment + 800 %></td>
-          </tr>
-
-        </tbody>
-      </table>
-
-    </div>
-  </div>
-
-
-<!-- その他情報 -->
-  <div class="row mt-5">
-    <div class="offset-2 col-6">
-      <div class="row mt-3">
-        <strong class="red-border px-3 mr-3">お支払い方法</strong>
-        <span class="brown-border px-3"><%= session[:payment] %></span>
+            <% @cart_items.each do |cart_item| %>
+        　   <tr>
+      　       <td> <%=cart_item.item.name %></td>
+              <td><%=cart_item.item.price %></td>
+              <td><%=cart_item.amount %></td>
+              <!--%=cart_item.item_id %-->
+              <td><%= (cart_item.item.price).floor * cart_item.amount %></td>
+              <% @total_money += cart_item.subtotal %>
+            <% end %>
+            </tr>
+          </thead>
+        </table>
+          <div class="col-4">
+            <table class="table table-bordered">
+              <tr>
+                <th class="table-secondary">送料</th>
+                <td><%= @order.shipping_cost.to_s(:delimited) %></td>
+              </tr>
+              <tr>
+                <th class="table-secondary">商品合計</th>
+                <td><%= @total_money.to_s(:delimited) %></td>
+              </tr>
+              <tr>
+                <th class="table-secondary">請求金額</th>
+                <td><%= (@total_money + @order.shipping_cost).to_s(:delimited) %></td>
+              </tr>
+            </table>
+          </div>
       </div>
 
-      <div class="row mt-3">
-        <strong class="red-border px-3 mr-3">　お届け先　</strong>
-        <span class="brown-border px-3">
-          <!-- うけとった文字列が8けたより少なければ -->
-          <% if  session[:address].length < 8 %>
-           <%= "〒" + @address.post_code + "  " + @address.address + "  " + @address.last_name + @address.first_name %><span>様</span>
+      <div class="col-md-3 mb-3">
+        <strong>支払方法</strong>
+        <%= @order.payment_method_i18n %>
+      </div>
 
-          <!-- 受け取った文字列がそれ以外なら -->
-          <% else %>
-            <%= session[:address] %><span>様</span>
-          <% end %>
-        </span>
+      <div class="col-md-3 mb-3">
+        <strong>お届け先</strong>
+        <%= @order.postal_code %>
+        <%= @order.address %>
+        <%= @order.name %>
+      </div>
+
+      <div class="text-center mb-5">
+        <%= form_with model: @order, url: public_orders_path, local: true, method: :post do |f| %>
+          <%= f.hidden_field :postal_code%>
+          <%= f.hidden_field :payment_method %>
+          <%= f.hidden_field :address %>
+          <%= f.hidden_field :name %>
+          <%= f.hidden_field :shipping_cost %>
+          <%= f.hidden_field :total_payment, :value => @total_money + @order.shipping_cost  %>
+          <div class="text-center">
+            <%= f.submit "注文を確定する", class: "btn btn-outline-success" %>
+          </div>
+        <% end %>
       </div>
     </div>
-
-    <div class="col-3">
-      <%=link_to "購入を確定する", orders_create_order_path, class: "btn btn-lg btn-danger ml-auto" %>
-    </div>
-
   </div>
 </div>

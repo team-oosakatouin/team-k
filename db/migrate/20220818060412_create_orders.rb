@@ -2,6 +2,8 @@ class CreateOrders < ActiveRecord::Migration[6.1]
   def change
     create_table :orders do |t|
       
+      t.integer :customer_id,null: false
+      
       ##配送先郵便番号を保存するカラム
       t.string :postal_code, null: false
       

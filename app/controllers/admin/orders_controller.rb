@@ -13,4 +13,10 @@ class Admin::OrdersController < ApplicationController
       @orders = Order.page(params[:page]).per(10)
     end
    end
+   
+   def show
+    @order = Order.find(params[:id])
+    @order_detail = OrderDetail.where(order_id: @order.id)
+   end
+   
 end
