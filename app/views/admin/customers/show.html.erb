@@ -1,7 +1,7 @@
 <div class = "container">
   <div class=“row”>
     <div class="col-md-8">
-      <h4 class="my-4 text-center", style="background-color: #eee; width:290px; padding-left: 12px;"><%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細</h4>
+      <h4 class="my-4 text-center", style="background-color: #eee; width:290px; padding-left: 12px;"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h4>
       <table class="table table-borderless">
         <tbody>
           <tr>
@@ -13,12 +13,12 @@
           
           <tr>
             <th scope="col">氏名</th>
-            <td style><%= @customer.first_name %>&ensp;<%= @customer.last_name %></td>
+            <td style><%= @customer.last_name %>&ensp;<%= @customer.first_name %></td>
           </tr>
           
           <tr>
             <th scope="col">カナ</th>
-            <td style><%= @customer.first_name_kana %>&ensp;<%= @customer.last_name_kana %></td>
+            <td style><%= @customer.last_name_kana %>&ensp;<%= @customer.last_name_kana %></td>
           </tr>
           
           <tr>
