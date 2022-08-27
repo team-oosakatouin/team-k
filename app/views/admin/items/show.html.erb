@@ -1,26 +1,23 @@
-<div class="container my-5">
+<div class="container">
   <div class="row">
-    <h2>商品詳細</h2>
+    <h4 class="text-center", style="background-color:#eee; width:120px; margin:30px 0 30px 115px;">商品詳細</h2>
   </div>
 
-  <div class="row mt-3">
-    <div class="offset-sm-1 col-sm-3">
-      <%= image_tag @item.image_id, size: "200x200" %>
-      <!-- %= attachment_image_tag @item, :image, :fill, 200, 200, format: "jpeg", fallback: 'noimage.jpg', size: '200x200' %-->
-    </div>
+  <div class="row mt-5">
+    <%= image_tag @item.image_id, size: "250x190" %>
+    <div class="col-8 m-auto">
+      <div class="col-10">
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td width="140px">商品名</td>
+              <td width="300px"><%= @item.name %></td>
+            </tr>
 
-    <div class="col-sm-4">
-      <table class="table table-borderless">
-        <tbody>
-          <tr>
-            <td>商品名</td>
-            <td><%= @item.name %></td>
-          </tr>
-
-          <tr>
-            <td>商品説明</td>
-            <td><%= @item.introduction %></td>
-          </tr>
+            <tr>
+              <td >商品説明</td>
+              <td><%= @item.introduction %></td>
+            </tr>
 
           <tr>
             <td>ジャンル</td>
@@ -28,7 +25,7 @@
           </tr>
 
           <tr>
-            <td>税込価格(税抜価格)</td>
+            <td>税込価格<br>(税抜価格)</td>
             <td>
               <%= (@item.price * 1.1).floor %>(<%= (@item.price) %>)円
             </td>
@@ -36,7 +33,7 @@
 
           <tr>
             <td>販売ステータス</td>
-            <td>
+            <td class="text-success font-weight-bold">
               <% if @item.is_active == true %>
               販売中
               <% else %>
@@ -45,14 +42,9 @@
             </td>
           </tr>
         </tbody>
-
       </table>
+      <%= link_to "編集する", edit_admin_item_path(@item), class:"w-25 btn btn-success", style:"font-weight:bold; padding:5px 20px; margin:20px 20px 0 120px;" %>
     </div>
   </div>
-
-  <div class="row">
-    <div class="offset-sm-9 col-sm-2">
-      <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-primary" %>
-    </div>
   </div>
 </div>

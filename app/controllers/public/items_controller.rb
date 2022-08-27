@@ -13,7 +13,7 @@ class Public::ItemsController < ApplicationController
 
       # 含まれていなければ
     else
-      @items = Item.where(is_active: "販売可").page(params[:page]).per(12)
+      @items = Item.where(is_active: "販売可").page(params[:page]).per(8)
      # 販売ステータスが販売可のみの商品を参照 ジャンル作成の昇順
     end
    end

@@ -1,66 +1,91 @@
 <div class = "container">
-
-<h3>新規会員登録</h3>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
-  
-    
-    <div class="field">
-      <%= f.label :名前 %>
-      <%= f.label :（姓） %>
-      <%= f.text_field :last_name, autofocus: true, autocomplete: "email" %>
-      <%= f.label :（名） %>
-      <%= f.text_field :first_name, autofocus: true, autocomplete: "email" %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :フリガナ %>
-      <%= f.label :（セイ） %>
-      <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "email" %>
-      <%= f.label :（メイ） %>
-      <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "email" %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :メールアドレス %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :郵便番号（ハイフンなし） %>
-      <%= f.text_field :postal_code, autofocus: true, autocomplete: "email" %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :住所 %>
-      <%= f.text_field :address, autofocus: true, autocomplete: "email" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :電話番号（ハイフンなし） %>
-      <%= f.text_field :telephone_number, autofocus: true, autocomplete: "email" %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :パスワード %>
-      <% if @minimum_password_length %>
-      (<%= @minimum_password_length %> 文字以上)
-      <% end %>
-      <%= f.password_field :password, autocomplete: "new-password" %>
-    </div>
-
-  <div class="field">
-    <%= f.label :パスワード（確認用）  %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "新規登録",class: "btn btn-success" %>
-  </div>
-<% end %>
-
-<h4>既に登録済みの方</h4>
-<%= link_to "こちら", new_customer_session_path %>
-<span> からログインしてください。</span>
+  <table class="ml-5">
+      <h5 class="text-center", style="background-color:#eee; width:150px; margin:30px 0 30px 100px;"><b>新規会員登録</b></h5>
+      <tbody>
+        <tr class="field">
+          <td><%= f.label :名前 %></td>
+          <td><%= f.label :（姓） %></td>
+          <td><%= f.text_field :last_name, placeholder:"令和" %></td>
+          <td><%= f.label :（名） %></td>
+          <td><%= f.text_field :first_name, placeholder:"道子" %></td>
+        </tr>
+        
+        <tr class="field">
+          <td><%= f.label :フリガナ %></td>
+          <td><%= f.label :（セイ） %></td>
+          <td><%= f.text_field :last_name_kana, placeholder:"レイワ" %></td>
+          <td><%= f.label :（メイ） %></td>
+          <td><%= f.text_field :first_name_kana, placeholder:"ミチコ" %></td>
+        </tr>
+        
+        <tr class="field">
+          <td><%= f.label :メールアドレス %></td>
+          <td></td>
+          <td ><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com" %></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr class="field">
+          <td><%= f.label :郵便番号（ハイフンなし） %></td>
+          <td></td>
+          <td><%= f.text_field :postal_code, placeholder:"0000000" %></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <trclass="field">
+          <td><%= f.label :住所 %></td>
+          <td></td>
+          <td colspan="3"><%= f.text_field :address, placeholder:"東京都渋谷区代々木神園町0-0", size: "59%" %></td>
+        </tr>
+        
+        <tr class="field">
+          <td><%= f.label :電話番号（ハイフンなし） %></td>
+          <td></td>
+          <td><%= f.text_field :telephone_number, placeholder:"0000000000" %></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr class="field">
+          <td><%= f.label :パスワード %></td>
+          <% if @minimum_password_length %>
+          <td>(<%= @minimum_password_length %> 文字以上)</td>
+          <% end %>
+          <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr class="field">
+          <td><%= f.label :パスワード（確認用）  %></td>
+          <td></td>
+          <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr class="field">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <div class="actions">
+              <%= f.submit "新規登録",class: "btn btn-success" %>
+            </div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><h5 class="ml-5 pl-3 pr-3 text-center", style="background-color:#ddd;">既に登録済みの方</h5></td>
+        </tr>
+        <tr>
+          <td colspan="3", class="text-center"><p><%= link_to "こちら", new_customer_session_path %>からログインしてください。</p></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
 </div>

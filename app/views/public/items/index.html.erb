@@ -1,7 +1,7 @@
-<div class="container my-5">
- <div class="row">
-    <div class="col-3">
-      <!--<-%= render 'genrebox', genres: @genres %>-->
+<div class="container mt-5 h-75">
+ <div class="row h-100">
+    <div class="col-md-2">
+      <!--%= render 'genrebox', genres: @genres %-->
     </div>
 
     <div class="col-9">
@@ -35,7 +35,7 @@
 	    	<% @items.each do |item| %>
           <div class="col-3 mt-3"> <!--ひとつのブロックをラップしてカラムを指定する-->
 		        <%= link_to public_item_path(item) do %><!--それをeach文で回す-->
-		          <%= image_tag item.image_id, size: "200x200" %>
+		          <%= image_tag item.image_id, size: "200x150" %>
 		        <% end %><br>
 		        <span class="text-muted"><%= link_to item.name, public_item_path(item) %></span><br>
 		        <!--<strong class="red-border"><-%= item.name %></strong><br>-->

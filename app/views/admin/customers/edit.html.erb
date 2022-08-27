@@ -1,17 +1,11 @@
-<div class="container my-5">
+<div class='container'>
   <div class="row">
-    <h2>会員編集画面</h2>
-  </div>
-
-  <div class="row d-flex justify-content-center">
-    <% if flash[:customer_updated_error] %>
-      <span class="text-danger"><%= flash[:customer_updated_error] %></span>
-    <% end %>
-  </div>
-
-    <div class="row mt-3 flex-column align-items-center">
-
-      <%= form_for (@customer), url: admin_customer_path(@customer), method: :patch do |f| %>
+    <div class='col-md-8'>
+      <h4 class="my-4 text-center", style="background-color: #eee; width:340px; padding-left: 12px;">会員編集画面</h4>
+      <div class="row d-flex justify-content-center">
+        <%= render "public/shared/error_messages", resource: @customer %>
+        
+        <%= form_for (@customer), url: admin_customer_path(@customer), method: :patch do |f| %>
 
         <div class="form-group row">
           <%= f.label :会員id, class: "col-sm-4" %>
@@ -20,14 +14,14 @@
 
         <div class="form-group row">
           <%= f.label :氏名, class: "col-sm-4" %>
-          <%= f.text_field :last_name, class: "form-control col-sm-4" %>
           <%= f.text_field :first_name, class: "form-control col-sm-4" %>
+          <%= f.text_field :last_name, class: "form-control col-sm-4" %>
         </div>
 
         <div class="form-group row">
           <%= f.label :フリガナ, class: "col-sm-4" %>
-          <%= f.text_field :last_name_kana, class: "form-control col-sm-4" %>
           <%= f.text_field :first_name_kana, class: "form-control col-sm-4" %>
+          <%= f.text_field :last_name_kana, class: "form-control col-sm-4" %>
         </div>
 
         <div class="form-group row">
@@ -61,7 +55,7 @@
         </div>
 
         <div class="row">
-          <%= f.submit "変更を保存する", class: "btn btn-primary mt-3 mx-auto" %>
+          <%= f.submit "変更を保存する", class: "btn btn-success mt-3 mx-auto" %>
         </div>
 
       <% end %>
