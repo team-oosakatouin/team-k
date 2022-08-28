@@ -8,6 +8,9 @@ class Public::CartItemsController < ApplicationController
    end
    end
 
+   
+
+
  def create
    @cart_items = current_customer.cart_items.all
  if cart_items_params[:amount] != ""
