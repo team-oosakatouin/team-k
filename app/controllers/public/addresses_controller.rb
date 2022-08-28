@@ -12,7 +12,9 @@ def create
     redirect_to public_addresses_path
   else
     flash[:danger] = '必要情報を入力してください／ハイフンは使用できません'
-    render public_addresses_path
+    @address = Address.new
+    @addresses = current_customer.addresses
+    render :index
   end
 end
 
