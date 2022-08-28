@@ -3,27 +3,27 @@
      <div class="p-1 mb-1 bg-light text-dark">
        <h5 class=".col-lg-8 font-weight-bold">配送先編集</h5>
      </div>
-   </div>
-   
-     <%= form_for(@address, url: public_address_path(@address),html: {method: "patch"}) do |f| %>
-   
+  </div>
+
+  <%= form_for(@address, url: public_address_path(@address),html: {method: "patch"}) do |f| %>
+
    <div class="row">
      <p class=".col-lg-8">郵便番号(ハイフンなし)</p>
-       <label for="exampleFormControlInput1"><%= f.text_field :postal_code %></label>
+     <label for="exampleFormControlInput1"><%= f.text_field :postal_code %></label>
    </div>
-   
+
    <div class="row">
      <p class=".col-lg-8">住所</p>
-       <label for="exampleFormControlInput1"><%= f.text_field :address %></label>
+      <label for="exampleFormControlInput1"><%= f.text_field :address %></label>
    </div>
-   
-   <div class="row">
-   <p class=".col-lg-8">宛名</p>
-      <label for="exampleFormControlInput1"><%= f.text_field :name %></label>
 
-   <p class=".col-lg-8">
-      <%= f.submit '変更内容を保存', class: "btn btn-sm btn-success" %>
-   </p>
+   <div class="row">
+     <p class=".col-lg-8">宛名</p>
+     <label for="exampleFormControlInput1"><%= f.text_field :name %></label>
+
+     <p class=".col-lg-8">
+       <%= f.submit '変更内容を保存', class: "btn btn-sm btn-success" %>
+     </p>
 </div>
 
-<% end %>
+   <% end %>

@@ -1,14 +1,14 @@
 class Public::OrdersController < ApplicationController
-  
-  
+
+
   def new
     @order = Order.new
     @customer = current_customer
   end
 
   def index
-    @orders = current_customer.orders.page(params[:page]).per(10)
-    @total_items = Item.count
+    @orders = current_customer.orders.page(params[:page])
+    @item = OrderDetail.all
   end
 
   def show
@@ -31,33 +31,33 @@ class Public::OrdersController < ApplicationController
            @order.name = @address.name
      else #バリデーションチェック
      end
+
     @order.shipping_cost = 800
     @select_address = params[:order][:select_address]
     @cart_items = CartItem.where(customer_id: current_customer.id)
-   
   end
 
   def complete
   end
 
   def create
-    cart_items = current_customer.cart_items
-    @order = current_customer.orders.new(order_params)
-    if @order.save
+    @order=Order.new(order_params)
+    cart_items = current_customer.cart_items.all
+  if @order.save
     current_customer.cart_items.all.each do |cart_item|
-      order_detail = OrderDetail.new
-      order_detail.item_id = cart_item.item_id
-      order_detail.order_id = @order.id
-      order_detail.amount = cart_item.amount
-      order_detail.price = cart_item.item.price
-      order_detail.save
-    end
+    order_detail = OrderDetail.new
+    order_detail.item_id = cart_item.item_id
+    order_detail.order_id = @order.id
+    order_detail.amount = cart_item.amount
+    order_detail.price = cart_item.item.price
+    order_detail.save
+  end
     redirect_to public_orders_complete_path
     cart_items.destroy_all
-    else
+  else
     @order = Order.new(order_params)
     render :new
-    end
+  end
   end
 
 

@@ -15,13 +15,13 @@
           </thead>
           <tbody>
             <% @cart_items.each do |cart_item| %>
-        　   <tr>
-      　       <td> <%=cart_item.item.name %></td>
-              <td><%=cart_item.item.price %></td>
-              <td><%=cart_item.amount %></td>
-              <!--%=cart_item.item_id %-->
-              <td><%= (cart_item.item.price).floor * cart_item.amount %></td>
-              <% @total_money += cart_item.subtotal %>
+        　     <tr>
+      　         <td> <%=cart_item.item.name %></td>
+                <td><%=cart_item.item.price %></td>
+                <td><%=cart_item.amount %></td>
+                <td><%= (cart_item.item.price).floor * cart_item.amount %></td>
+                <% @total_money += cart_item.subtotal %>
+              </tr>
             <% end %>
             </tr>
           </tbody>
@@ -30,6 +30,7 @@
           <div style = "display:inline-block">
             <table class = "table table-bordered border-dark ml-3", style = "width:300px; border-width:3px;">
               <tbody>
+
               <tr>
                 <th class="table-secondary">送料</th>
                 <td><%= @order.shipping_cost.to_s(:delimited) %></td>
