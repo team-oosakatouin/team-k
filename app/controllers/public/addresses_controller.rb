@@ -1,7 +1,7 @@
 class Public::AddressesController < ApplicationController
 def index
   @address = Address.new
-  @addresses = Address.all
+  @addresses = current_customer.addresses
 end
 
 def create
@@ -35,7 +35,6 @@ end
 
 
 def destroy
-  # ↓記載が分からん。。。
   @address = Address.find(params[:id])
   @address.destroy
   flash[:success] = '削除しました'

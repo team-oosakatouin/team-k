@@ -5,7 +5,7 @@
     </div>
   </div>
 
-		<%= form_for @address, :url => {:action => :create} do |f| %>
+	<%= form_for @address, :url => {:action => :create} do |f| %>
 
 		<div class="row mb-1">
       <p class=".col-lg-8">郵便番号(ハイフンなし)</p>
@@ -21,12 +21,11 @@
       <p class=".col-lg-8">宛名</p>
       <label for="exampleFormControlInput1"><%= f.text_field :name, id: "" %></label>
 
-
        <p class=".col-lg-8">
          <%= f.submit '新規登録', class: "btn btn-sm btn-success" %>
         </p>
-     </div>
-     <% end %>
+    </div>
+  <% end %>
 
 		<table class="table table-bordered address-table">
 			<thead>
