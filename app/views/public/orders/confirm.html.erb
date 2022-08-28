@@ -16,15 +16,14 @@
               <th>小計</th>
             </tr>
             <% @cart_items.each do |cart_item| %>
-        　   <tr>
-      　       <td> <%=cart_item.item.name %></td>
-              <td><%=cart_item.item.price %></td>
-              <td><%=cart_item.amount %></td>
-              <!--%=cart_item.item_id %-->
-              <td><%= (cart_item.item.price).floor * cart_item.amount %></td>
-              <% @total_money += cart_item.subtotal %>
+        　     <tr>
+      　         <td> <%=cart_item.item.name %></td>
+                <td><%=cart_item.item.price %></td>
+                <td><%=cart_item.amount %></td>
+                <td><%= (cart_item.item.price).floor * cart_item.amount %></td>
+                <% @total_money += cart_item.subtotal %>
+              </tr>
             <% end %>
-            </tr>
           </thead>
         </table>
           <div class="col-4">
