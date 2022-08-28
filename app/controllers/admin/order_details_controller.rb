@@ -1,4 +1,4 @@
-class Admins::OrderDetailsController < ApplicationController
+class Admin::OrderDetailsController < ApplicationController
 	before_action :authenticate_admin!
 
 	def update
@@ -14,7 +14,7 @@ class Admins::OrderDetailsController < ApplicationController
 				order_detail.order.update(order_status: "発送準備中")
 			end
 		end
-		redirect_to admins_order_path(order_detail.order.id)
+		redirect_to admin_order_path(order_detail.order.id)
 	end
 
 	private
