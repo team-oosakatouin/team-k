@@ -35,7 +35,6 @@ end
 
 
 def destroy
-  # ↓記載が分からん。。。
   @address = Address.find(params[:id])
   @address.destroy
   flash[:success] = '削除しました'

@@ -6,44 +6,43 @@
   </div>
 
 	  <%= form_for(@customers, url: public_customer_path(@customers),html: {method: "patch"}) do |f| %>
-
-	  <div class="row">
-      <label for="inputEmail3" class="col-sm-2 col-form-label">氏名</label>
-      <label><%= f.text_field :last_name %></label>
-      <div class="ml-5">
-      <label><%= f.text_field :first_name %></label>
+	    <div class="row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">氏名</label>
+        <label><%= f.text_field :last_name %></label>
+        <div class="ml-5">
+          <label><%= f.text_field :first_name %></label>
+        </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div for="inputEmail3" class="col-sm-2 col-form-label">フリガナ</div>
-      <label><%= f.text_field :last_name_kana %></label>
-      <div class="ml-5">
-      <label><%= f.text_field :first_name_kana %></label>
+      <div class="row">
+        <div for="inputEmail3" class="col-sm-2 col-form-label">フリガナ</div>
+        <label><%= f.text_field :last_name_kana %></label>
+        <div class="ml-5">
+          <label><%= f.text_field :first_name_kana %></label>
+        </div>
       </div>
-    </div>
 
-    <div class="row">
-     <div for="inputEmail3" class="col-sm-2 col-form-label">郵便番号</div>
-     <label><%= f.text_field :postal_code %></label>
-    </div>
+      <div class="row">
+        <div for="inputEmail3" class="col-sm-2 col-form-label">郵便番号</div>
+        <label><%= f.text_field :postal_code %></label>
+      </div>
 
-    <div class="row">
-     <div for="inputEmail3" class="col-sm-2 col-form-label">住所</div>
-     <label><%= f.text_field :address %></label>
-    </div>
+      <div class="row">
+        <div for="inputEmail3" class="col-sm-2 col-form-label">住所</div>
+        <label><%= f.text_field :address %></label>
+      </div>
 
-    <div class="row">
-     <div for="inputEmail3" class="col-sm-2 col-form-label">電話番号</div>
-     <label><%= f.text_field :telephone_number %></label>
-    </div>
+      <div class="row">
+        <div for="inputEmail3" class="col-sm-2 col-form-label">電話番号</div>
+        <label><%= f.text_field :telephone_number %></label>
+      </div>
 
-		<div class="row">
-     <div for="inputEmail3" class="col-sm-2 col-form-label">メールアドレス</div>
-     <label><%= f.email_field :email, autofocus: true, autocomplete: "email" %></label>
-    </div>
+		  <div class="row">
+        <div for="inputEmail3" class="col-sm-2 col-form-label">メールアドレス</div>
+        <label><%= f.email_field :email, autofocus: true, autocomplete: "email" %></label>
+      </div>
 
 			  <%= f.submit "編集内容を保存", class: "btn btn-success" %>
 				<%= link_to "退会する",public_customers_quit_path, class: "btn btn-danger" %>
-       <% end %>
+    <% end %>
   </div>
