@@ -24,10 +24,10 @@ class Public::OrdersController < ApplicationController
            @order.postal_code = current_customer.postal_code
            @order.address = current_customer.address
            @order.name = current_customer.last_name + current_customer.first_name
-     elsif  params[:selected_address] == 'radio2'
-           @address = Address.find(params[:order][:address_id])
+     elsif  params[:selected_address] == "radio2"
+           @address = Address.find(params[:address][:address])
            @order.postal_code = @address.postal_code
-           @order.address = @address.shipping_address
+           @order.address = @address.address
            @order.name = @address.name
      else #バリデーションチェック
      end
