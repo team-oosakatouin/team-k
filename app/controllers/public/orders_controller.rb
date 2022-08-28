@@ -31,7 +31,6 @@ class Public::OrdersController < ApplicationController
            @order.name = @address.name
      else #バリデーションチェック
      end
-
     @order.shipping_cost = 800
     @select_address = params[:order][:select_address]
     @cart_items = CartItem.where(customer_id: current_customer.id)
@@ -42,6 +41,7 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order=Order.new(order_params)
+    @order.customer_id = current_customer.id
     cart_items = current_customer.cart_items.all
   if @order.save
     current_customer.cart_items.all.each do |cart_item|
@@ -62,7 +62,7 @@ class Public::OrdersController < ApplicationController
 
 
   def order_params
-    params.require( :order).permit( :payment_method, :postal_code, :address, :name ,:total_payment ,:shipping_cost)
+    params.require(:order).permit( :payment_method, :postal_code, :address, :name ,:total_payment ,:shipping_cost)
   end
 
 
