@@ -18,12 +18,11 @@
         <% @orders.each do |order| %>
           <tr>
             <td><%= link_to order.created_at.strftime("%Y-%m-%d %H:%M"), admin_order_path(order) %></td>
-            <!-- .strftime => created_atの表記を設定 -->
             <td><%= order.customer.last_name %>
               <%= order.customer.first_name %>
             </td>
             <td><%= order.order_details.sum(:quantity) %></td>
-            <td><%= order.order_status %></td>
+            <td><%= order.status_i18n %></td>
           </tr>
         <% end %>
       </tbody>
@@ -31,7 +30,6 @@
   </div>
  </div>
 
-  <!-- ページネーション -->
 
 
   <div class="container">
